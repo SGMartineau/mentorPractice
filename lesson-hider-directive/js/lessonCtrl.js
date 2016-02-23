@@ -5,8 +5,9 @@ angular.module('directivePractice').controller('lessonCtrl', function ($scope) {
     $scope.announceDay = function(lesson, day) {
         if(day === undefined) {
             alert(lesson + ' is never active.');
+        } else {
+            alert(lesson + ' is active on ' + day + '.');
         }
-        alert(lesson + ' is active on ' + day + '.');
     }
     
 });

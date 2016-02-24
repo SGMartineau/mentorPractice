@@ -9,7 +9,7 @@
 
     <ul>
         <li ng-repeat="thread in threads">
-            <a ui-sref="thread({threadId: thread.$id})">
+            <a ui-sref="post({postId: thread.$id})">
                 <span>{{ thread.title }}</span>
                 <span>(by {{ thread.username }})</span>
             </a>

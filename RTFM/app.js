@@ -1,4 +1,4 @@
-angular.module('rtfm', [ui.router, firebase])
+angular.module('rtfm', ['ui.router', 'firebase'])
     
 .constant('fb', {
     url: 'https://sm-forum.firebaseIO.com/'
@@ -11,9 +11,16 @@ angular.module('rtfm', [ui.router, firebase])
     $stateProvider.state('threads', {
         url: '/threads',
         templateUrl: 'threads/threads.html',
-        controller: 'threadsCtrl'
-    }).state('post', {
-        url: '/threads/:post',
+        controller: 'threadsCtrl',
+        resolve: {
+            threadsRef: function (threadsService) {
+                return threadsService.getThreads();
+            }
+        }
+    })
+        
+    .state('post', {
+        url: '/threads/:postId',
         templateUrl: 'post/post.html',
         controller: 'postCtrl'
     })

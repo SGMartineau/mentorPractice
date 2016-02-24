@@ -32,6 +32,18 @@ angular.module('rtfm', ['ui.router', 'firebase'])
             }
         },
     })
+    
+    .state('login', {
+        url: '/login',
+        controller: 'loginCtrl',
+        templateUrl: '/login/login.html'
+    })
+    
+    .state('signup', {
+        url: '/signup',
+        templateUrl: 'signup/signup.html',
+        controller: 'signupCtrl.js'
+    })
 
     $urlRouterProvider.otherwise('/threads');
 

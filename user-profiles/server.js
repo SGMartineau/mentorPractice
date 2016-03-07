@@ -1,18 +1,22 @@
 var express = require('express'),
-    expressSession = require('express-session'),
+    session = require('express-session'),
     bodyParser = require('body-parser'),
     cors = require('cors'),
     app = express(),
-    config = require('./server.js')
+    config = require('./config.js'),
+    userCtrl = require('./controllers/userCtrl.js'),
+    profileCtrl = require('./controllers/profileCtrl.js'),
     corsOptions = { origin: 'http://localhost:8000' };
 
-
+console.log(__dirname);
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
+app.use(session({ secret: config.sessionSecret }));
 
 
-
-
+app.post('/api/login', userCtrl.login);
+app.get('/api/profiles', profileCtrl.populateFriends);
 
 
 
